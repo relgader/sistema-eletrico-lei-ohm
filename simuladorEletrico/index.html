@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title> Simulador de Circuitos Elétrico</title>
+
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body> 
@@ -19,7 +21,9 @@
        
         <main>
 
-            <section>
+            <div class="painel-principal">
+
+            <section class="controles">
 
                 <h2>Configurações do circuito</h2>
 
@@ -30,7 +34,7 @@
                     <input
                     type="range"
                     id="tensao"
-                    min="0"
+                    min="1"
                     max="24"
                     value="12"
                     >
@@ -55,7 +59,7 @@
 
             </section>
             
-            <section>
+            <section class="resultados">
                 <h2>Resultados</h2>
 
                 <div>
@@ -67,6 +71,8 @@
                 </div>
 
             </section>
+
+            </div>
             
         </main>
 

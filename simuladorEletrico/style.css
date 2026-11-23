@@ -1,0 +1,72 @@
+/*configuraçoes gerais da pag*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #101827;
+    color: #f1f5f9;
+    font-family: 'Montserrat', sans-serif;
+    padding: 50px;
+}
+
+header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1{
+    color: #38bdf8;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+header p{
+    color: #cbd5e1;
+}
+
+main{
+    max-width: 700px;
+    margin: auto;
+}
+
+section{
+    background-color: #1d2b40;
+    padding: 35px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+section h2{
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+
+section div{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="range"]{
+    width: 100%;
+    cursor: pointer;
+}
+
+span{
+    color:#38bdf8;
+    font-weight: bold;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
