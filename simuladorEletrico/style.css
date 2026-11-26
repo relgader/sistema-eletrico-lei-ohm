@@ -6,14 +6,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/*estilizaçoes do body e header*/
 body{
     background-color: #101827;
     color: #f1f5f9;
     font-family: 'Montserrat', sans-serif;
     padding: 50px;
 }
-
+/*estilizaçoes do header e main*/
 header{
     text-align: center;
     margin-bottom: 40px;
@@ -33,7 +33,7 @@ main{
     max-width: 700px;
     margin: auto;
 }
-
+/*estilizaçoes das sections*/
 section{
     background-color: #1d2b40;
     padding: 35px;
@@ -49,7 +49,7 @@ section h2{
 section div{
     margin-bottom: 20px;
 }
-
+/*estilizaçoes dos labels, inputs e spans*/
 label{
     display: block;
     margin-bottom: 10px;
@@ -65,8 +65,28 @@ span{
     font-weight: bold;
 }
 
-.container{
+.painel-principal{
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: stretch;
+}
+
+.controles{
+    flex: 1;
+}
+
+.resultados{
+    flex: 1;
+}
+
+@media (max-width: 600px){
+
+    body{
+        padding: 20px;
+    }
+
+    .painel-principal{
+        flex-direction: column;
+    }
 }
