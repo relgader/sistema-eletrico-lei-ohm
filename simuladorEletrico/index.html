@@ -1,27 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
 
-        <title> Simulador de Circuitos Elétrico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <title>Simulador de Circuitos Elétricos</title>
 
-    <body> 
+    <link rel="stylesheet" href="style.css">
+</head>
 
-            <header>
+<body>
 
-                <h1>Simulador Elétrico - by Richard</h1>
+    <header>
 
-                <p>Explore a Lei de Ohm de forma interativa.</p>            
-            </header>
-       
-        <main>
+        <h1>Simulador Elétrico - by Richard</h1>
 
-            <div class="painel-principal">
+        <p>Explore a Lei de Ohm de forma interativa.</p>
+
+    </header>
+
+    <main>
+        <div class="painel-principal">
 
             <section class="controles">
 
@@ -32,14 +34,15 @@
                     <label for="tensao">Tensão elétrica (V)</label>
 
                     <input
-                    type="range"
-                    id="tensao"
-                    min="1"
-                    max="24"
-                    value="12"
+                        type="range"
+                        id="tensao"
+                        min="0"
+                        max="24"
+                        value="12"
                     >
 
-                    <span>12 V</span>
+                    <span id="valorTensao">12 V</span>
+
                 </div>
 
                 <div>
@@ -47,36 +50,43 @@
                     <label for="resistencia">Resistência (Ω)</label>
 
                     <input
-                    type="range"
-                    id="resistencia"
-                    min="0"
-                    max="100"
-                    value="10"
+                        type="range"
+                        id="resistencia"
+                        min="1"
+                        max="100"
+                        value="10"
                     >
 
-                    <span>10 Ω</span>
+                    <span id="valorResistencia">10 Ω</span>
+
                 </div>
 
             </section>
-            
+
             <section class="resultados">
+
                 <h2>Resultados</h2>
 
                 <div>
-                    <p>Corrente elétrica: 1,2 A</p>
+                    <p>Corrente elétrica: 
+                        <span id="valorCorrente">1,2 A</span>
+                    </p>
                 </div>
 
                 <div>
-                    <p>Potência elétrica: 14,4 W</p>
+                    <p>Potência elétrica: 
+                        <span id="valorPotencia">14,4 W</span>
+                    </p>
                 </div>
 
             </section>
 
-            </div>
-            
-        </main>
+        </div>
 
+    </main>
 
-    </body>
+    <script src="script.js"></script>
 
-</hmtl>
+</body>
+
+</html>
