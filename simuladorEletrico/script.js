@@ -17,14 +17,19 @@ const textoPotencia = document.getElementById("valorPotencia");
 const lampGlow = document.getElementById("lampGlow");
 const lampBulbo = document.getElementById("lampBulbo");
 
-const poloPositivo = document.getElementById("poloPositivo");
-const poloNegativo = document.getElementById("poloNegativo");
+// elementos dos polos
+const poloSuperior = document.getElementById("poloSuperior");
+const poloInferior = document.getElementById("poloInferior");
 
 const botaoPolaridade = document.getElementById("inverterPolaridade");
 const textoSentido = document.getElementById("sentidoCorrente");
 
 // indica se a polaridade está invertida
 let polaridadeInvertida = false;
+
+const setaSuperior = document.getElementById("setaSuperior");
+const setaDireita = document.getElementById("setaDireita");
+const setaInferior = document.getElementById("setaInferior");
 
 function atualizarValores() {
 
@@ -70,13 +75,61 @@ botaoPolaridade.addEventListener("click", function() {
 
     polaridadeInvertida = !polaridadeInvertida;
 
+    const valorTensao = Number(controleTensao.value);
+
     if (polaridadeInvertida) {
+
         textoSentido.textContent = "Anti-horário";
+
+        poloSuperior.textContent = "0 V";
+        poloInferior.textContent = "-" + valorTensao + " V";
+
+        poloSuperior.setAttribute("fill", "#38bdf8");
+        poloInferior.setAttribute("fill", "#22c55e");
+
     } else {
+
         textoSentido.textContent = "Horário";
+
+        poloSuperior.textContent = "+" + valorTensao + " V";
+        poloInferior.textContent = "0 V";
+
+        poloSuperior.setAttribute("fill", "#22c55e");
+        poloInferior.setAttribute("fill", "#38bdf8");
     }
 
+    if (polaridadeInvertida) {
+    poloSuperior.textContent = "0 V";
+    poloInferior.textContent = "-" + valorTensao + " V";
+    }else{
+    poloSuperior.textContent = "+" + valorTensao + " V";
+    poloInferior.textContent = "0 V";
+}
+    atualizarSetas();
 });
 
 // atualiza o simulador ao carregar a página
 atualizarValores();
+
+function atualizarSetas() {
+
+    if (polaridadeInvertida) {
+
+        // sentido anti-horário
+        setaSuperior.setAttribute("d", "M170 58 L155 50 L170 42");
+
+        setaDireita.setAttribute("d", "M408 115 L400 100 L392 115");
+
+        setaInferior.setAttribute("d", "M230 208 L245 200 L230 192");
+
+    } else {
+
+        // sentido horário
+        setaSuperior.setAttribute("d", "M170 42 L185 50 L170 58");
+
+        setaDireita.setAttribute("d", "M392 115 L400 130 L408 115");
+
+        setaInferior.setAttribute("d", "M230 192 L215 200 L230 208");
+
+    }
+}

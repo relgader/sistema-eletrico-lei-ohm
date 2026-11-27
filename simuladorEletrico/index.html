@@ -130,6 +130,35 @@
                     <line x1="100" y1="153" x2="100" y2="200"
                         stroke="#38bdf8" stroke-width="4"/>
 
+                    <!-- Setas indicando o sentido da corrente -->
+
+                    <!-- Fio superior: esquerda para direita -->
+                    <path id="setaSuperior"
+                        d="M170 42 L185 50 L170 58"
+                        fill="none"
+                        stroke="#22c55e"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                    <!-- Fio direito: cima para baixo -->
+                    <path id="setaDireita"
+                        d="M392 115 L400 130 L408 115"
+                        fill="none"
+                        stroke="#22c55e"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                    <!-- Fio inferior: direita para esquerda -->
+                    <path id="setaInferior"
+                        d="M230 192 L215 200 L230 208"
+                        fill="none"
+                        stroke="#22c55e"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
                     <!-- Bateria -->
                     <line x1="75" y1="95" x2="125" y2="95"
                         stroke="#f1f5f9" stroke-width="4"/>
@@ -137,8 +166,8 @@
                     <line x1="85" y1="155" x2="115" y2="155"
                         stroke="#f1f5f9" stroke-width="4"/>
                     
-                    <!-- Identificação dos polos -->
-                    <text id="poloPositivo"
+                    <!-- Polo superior da bateria -->
+                    <text id="poloSuperior"
                         x="135" y="100"
                         fill="#22c55e"
                         font-size="14"
@@ -146,7 +175,8 @@
                         +12 V
                     </text>
 
-                    <text id="poloNegativo"
+                    <!-- Polo inferior da bateria -->
+                    <text id="poloInferior"
                         x="135" y="160"
                         fill="#38bdf8"
                         font-size="14"
@@ -186,6 +216,22 @@
                     <line x1="243" y1="62" x2="257" y2="62"
                         stroke="#f1f5f9" stroke-width="3"/>
 
+
+                    <!-- Caminho invisível percorrido pela corrente -->
+                    <path
+                        id="caminhoCorrente"
+                        d="M100 95 L100 50 L225 50 L240 50 L260 50 L275 50 L400 50 L400 200 L100 200 L100 155 L100 95"
+                        fill="none"
+                        stroke="none"
+                    />
+
+                    <!-- Partículas da corrente elétrica -->
+                    <circle id="particula1" r="4" fill="#facc15"/>
+                    <circle id="particula2" r="4" fill="#facc15"/>
+                    <circle id="particula3" r="4" fill="#facc15"/>
+                    <circle id="particula4" r="4" fill="#facc15"/>
+                    <circle id="particula5" r="4" fill="#facc15"/>
+                
                 </svg>
 
 
