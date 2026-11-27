@@ -19,6 +19,13 @@ const lampBulbo = document.getElementById("lampBulbo");
 
 const poloPositivo = document.getElementById("poloPositivo");
 const poloNegativo = document.getElementById("poloNegativo");
+
+const botaoPolaridade = document.getElementById("inverterPolaridade");
+const textoSentido = document.getElementById("sentidoCorrente");
+
+// indica se a polaridade está invertida
+let polaridadeInvertida = false;
+
 function atualizarValores() {
 
     // pega os valores dos controles
@@ -58,6 +65,18 @@ function atualizarValores() {
 // detecta alterações nos controles
 controleTensao.addEventListener("input", atualizarValores);
 controleResistencia.addEventListener("input", atualizarValores);
+
+botaoPolaridade.addEventListener("click", function() {
+
+    polaridadeInvertida = !polaridadeInvertida;
+
+    if (polaridadeInvertida) {
+        textoSentido.textContent = "Anti-horário";
+    } else {
+        textoSentido.textContent = "Horário";
+    }
+
+});
 
 // atualiza o simulador ao carregar a página
 atualizarValores();

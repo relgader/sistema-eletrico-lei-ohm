@@ -111,4 +111,24 @@ span{
 #lampFilamento {
     transition: opacity 0.15s ease;
 }
+
+.controle-polaridade button {
+    background-color: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.controle-polaridade button:hover {
+    background-color: #0284c7;
+}
+
+.controle-polaridade p {
+    margin-top: 15px;
+}
 }
