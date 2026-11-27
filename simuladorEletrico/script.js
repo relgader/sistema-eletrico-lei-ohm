@@ -3,51 +3,54 @@
 const tensao = document.getElementById("tensao");
 const resistencia = document.getElementById("resistencia");
 
-// exibindo os valores no console
-console.log(tensao.value);
-console.log(resistencia.value);
-
-//convertendo os valores para numeros
-const valorTensao = Number(tensao.value);
-const valorResistencia = Number(resistencia.value);
-
-//calculando a corrente
-
-const corrente = valorTensao / valorResistencia;
-
-console.log("Corrente elétrica: " + corrente + " A");
-
-//fazendo javascript entender que tem que atualizar o valor da corrente quando o usuário mudar os valores de tensão ou resistência
-
-//controles
+// controles
 const controleTensao = document.getElementById("tensao");
 const controleResistencia = document.getElementById("resistencia");
 
+// elementos que exibem os valores
 const textoTensao = document.getElementById("valorTensao");
 const textoResistencia = document.getElementById("valorResistencia");
-const  textoCorrente = document.getElementById("valorCorrente");
+const textoCorrente = document.getElementById("valorCorrente");
 const textoPotencia = document.getElementById("valorPotencia");
+
+// elementos da lâmpada
+const lampGlow = document.getElementById("lampGlow");
+const lampBulbo = document.getElementById("lampBulbo");
 
 function atualizarValores() {
 
-    //pega os valores dos controles
-    const tensao = Number(controleTensao.value);
-    const resistencia = Number(controleResistencia.value);
+    // pega os valores dos controles
+    const valorTensao = Number(controleTensao.value);
+    const valorResistencia = Number(controleResistencia.value);
 
-    //calcula a corrente e a potência
-    const corrente = tensao / resistencia;
-    const potencia = tensao * corrente;
+    // calcula a corrente e a potência
+    const corrente = valorTensao / valorResistencia;
+    const potencia = valorTensao * corrente;
 
-    //atualiza os valores na tela
-    textoTensao.textContent = tensao + " V";
-    textoResistencia.textContent = resistencia + " Ω";
+    // atualiza os valores na tela
+    textoTensao.textContent = valorTensao + " V";
+    textoResistencia.textContent = valorResistencia + " Ω";
     textoCorrente.textContent = corrente.toLocaleString("pt-BR") + " A";
     textoPotencia.textContent = potencia.toLocaleString("pt-BR") + " W";
+
+    // calcula o brilho da lâmpada
+    const brilho = Math.min(potencia / 60, 1);
+
+    // atualiza a aparência da lâmpada
+    lampGlow.style.opacity = brilho * 0.8; 
+
+    const intensidade = Math.round(51 + (250 - 51) * brilho);
+    const verde = Math.round(65 + (204 - 65) * brilho);
+    const azul = Math.round(85 + (21 - 85) * brilho);
+
+    lampBulbo.style.fill = `rgb(${intensidade}, ${verde}, ${azul})`;
+
+    lampBulbo.style.opacity = 1;
 }
 
-//detecta que os controles estão sendo alterados
+// detecta alterações nos controles
 controleTensao.addEventListener("input", atualizarValores);
 controleResistencia.addEventListener("input", atualizarValores);
 
-//atualizar o simulador
+// atualiza o simulador ao carregar a página
 atualizarValores();
