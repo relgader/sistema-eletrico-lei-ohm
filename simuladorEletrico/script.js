@@ -34,10 +34,11 @@ function atualizarValores() {
     textoPotencia.textContent = potencia.toLocaleString("pt-BR") + " W";
 
     // calcula o brilho da lâmpada
-    const brilho = Math.min(potencia / 60, 1);
+    const brilho = Math.min(potencia / 80, 1);
 
     // atualiza a aparência da lâmpada
-    lampGlow.style.opacity = brilho * 0.8; 
+    lampGlow.style = brilho;
+    lampGlow.setAttribute("r", 30 + (brilho * 25)); 
 
     const intensidade = Math.round(51 + (250 - 51) * brilho);
     const verde = Math.round(65 + (204 - 65) * brilho);
