@@ -83,44 +83,68 @@
 
                 <svg width="100%" viewBox="0 0 600 250">
 
-                    //superior esquerdo
-                    <line x1="100" y1="50" x2="210" y2="50"
+                    <!-- Fio superior esquerdo -->
+                    <line x1="100" y1="50" x2="225" y2="50"
                         stroke="#38bdf8" stroke-width="4"/>
 
-                    //resistor
-                    <rect x="210" y="35" width="80" height="30"
-                        fill="#1d2b40" stroke="#f1f5f9" stroke-width="3" />
+                    <!-- Fio superior direito -->
+                    <line x1="275" y1="50" x2="400" y2="50"
+                        stroke="#38bdf8" stroke-width="4"/>
 
-                    <text x="250" y="25" fill="#f1f5f9" font-size="14" text-anchor="middle">
-                        Resistor
-                    </text>
-                    
-                    //superior direito
-                    <line x1="290" y1="50" x2="400" y2="50"
-                        stroke="#38bdf8" stroke-width="4" />
+                    <!-- Fio direito -->
+                    <line x1="400" y1="50" x2="400" y2="200"
+                        stroke="#38bdf8" stroke-width="4"/>
 
-                    //lateral direita
-                    <line x1="400" y1="50" x2="400" y2="200" 
-                        stroke="#38bdf8" stroke-width="4" />
-
-                    //inferior
+                    <!-- Fio inferior -->
                     <line x1="400" y1="200" x2="100" y2="200"
-                        stroke="#38bdf8" stroke-width="4" />
+                        stroke="#38bdf8" stroke-width="4"/>
 
-                    //lateral esquerda superior
-                    <line x1="100" y1="50" x2="100" y2="95" 
-                        stroke="#38bdf8" stroke-width="4" />
-                        
-                    //lateral esquerda inferior
-                    <line x1="100" y1="155" x2="100" y2="200"
-                        stroke="#38bdf8" stroke-width="4" />
+                    <!-- Fio esquerdo superior -->
+                    <line x1="100" y1="50" x2="100" y2="95"
+                        stroke="#38bdf8" stroke-width="4"/>
 
-                    //bateria  
-                      
-                   //positivo <line x1="75" y1="95" x2="125" y2="95"
-                    stroke="#f1f5f9" stroke-width="4" />
-                   //negativo <line x1="85" y1="155" x2="115" y2="155"
-                    stroke="#f1f5f9" stroke-width="4" />
+                    <!-- Fio esquerdo inferior -->
+                    <line x1="100" y1="153" x2="100" y2="200"
+                        stroke="#38bdf8" stroke-width="4"/>
+
+                    <!-- Bateria -->
+                    <line x1="75" y1="95" x2="125" y2="95"
+                        stroke="#f1f5f9" stroke-width="4"/>
+
+                    <line x1="85" y1="155" x2="115" y2="155"
+                        stroke="#f1f5f9" stroke-width="4"/>
+
+                    <!-- Brilho externo da lâmpada -->
+                    <circle id="lampGlow"
+                        cx="250" cy="50" r="30"
+                        fill="#facc15" opacity="0.25"/>
+
+                    <!-- Corpo da lâmpada -->
+                    <circle id="lampBulbo"
+                        cx="250" cy="50" r="22"
+                        fill="#334155"
+                        stroke="#f1f5f9"
+                        stroke-width="3"/>
+
+                    <!-- Filamento -->
+                    <path d="M240 50 L245 43 L250 57 L255 43 L260 50"
+                        fill="none"
+                        stroke="#facc15"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                    <!-- Base da lâmpada -->
+                    <path d="M240 70 L240 78 L260 78 L260 70"
+                        fill="#94a3b8"
+                        stroke="#f1f5f9"
+                        stroke-width="2"/>
+
+                    <line x1="240" y1="74" x2="260" y2="74"
+                        stroke="#334155" stroke-width="2"/>
+
+                    <line x1="243" y1="82" x2="257" y2="82"
+                        stroke="#f1f5f9" stroke-width="3"/>
 
                 </svg>
 
