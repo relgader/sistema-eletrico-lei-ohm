@@ -16,6 +16,7 @@ const textoPotencia = document.getElementById("valorPotencia");
 // elementos da lâmpada
 const lampGlow = document.getElementById("lampGlow");
 const lampBulbo = document.getElementById("lampBulbo");
+const lampFilamento = document.getElementById("lampFilamento");
 
 // elementos dos polos
 const poloSuperior = document.getElementById("poloSuperior");
@@ -31,6 +32,29 @@ const setaSuperior = document.getElementById("setaSuperior");
 const setaDireita = document.getElementById("setaDireita");
 const setaInferior = document.getElementById("setaInferior");
 
+// caminho percorrido pelas partículas
+const caminhoCorrente = document.getElementById("caminhoCorrente");
+
+// partículas
+const particulas = [
+    document.getElementById("particula1"),
+    document.getElementById("particula2"),
+    document.getElementById("particula3"),
+    document.getElementById("particula4"),
+    document.getElementById("particula5")
+];
+
+// intensidade atual da corrente
+let intensidadeCorrente = 0;
+
+// posição inicial de cada partícula
+let progressoParticulas = [0, 0.2, 0.4, 0.6, 0.8];
+
+// comprimento total do caminho
+const comprimentoCaminho = caminhoCorrente.getTotalLength();
+
+let ultimoTempo = 0;
+
 function atualizarValores() {
 
     // pega os valores dos controles
@@ -39,6 +63,7 @@ function atualizarValores() {
 
     // calcula a corrente e a potência
     const corrente = valorTensao / valorResistencia;
+    intensidadeCorrente = Math.abs(corrente);
     const potencia = valorTensao * corrente;
 
     // atualiza os valores na tela
@@ -48,15 +73,20 @@ function atualizarValores() {
     textoPotencia.textContent = potencia.toLocaleString("pt-BR") + " W";
 
     // atualiza os valores dos polos
-    poloPositivo.textContent = "+" + valorTensao + " V";
-    poloNegativo.textContent = "0 V";
+    if (polaridadeInvertida) {
+        poloSuperior.textContent = "0 V";
+        poloInferior.textContent = "-" + valorTensao + " V";
+    } else {
+        poloSuperior.textContent = "+" + valorTensao + " V";
+        poloInferior.textContent = "0 V";
+    }
 
     // calcula o brilho da lâmpada
     const brilho = Math.min(potencia / 80, 1);
 
     // atualiza a aparência da lâmpada
-    lampGlow.style = brilho;
-    lampGlow.setAttribute("r", 30 + (brilho * 25)); 
+    lampGlow.style.opacity = brilho;
+    lampGlow.setAttribute("r", 30 + (brilho * 25));
 
     const intensidade = Math.round(51 + (250 - 51) * brilho);
     const verde = Math.round(65 + (204 - 65) * brilho);
@@ -65,6 +95,7 @@ function atualizarValores() {
     lampBulbo.style.fill = `rgb(${intensidade}, ${verde}, ${azul})`;
 
     lampBulbo.style.opacity = 1;
+    lampFilamento.style.opacity = brilho;
 }
 
 // detecta alterações nos controles
@@ -98,13 +129,6 @@ botaoPolaridade.addEventListener("click", function() {
         poloInferior.setAttribute("fill", "#38bdf8");
     }
 
-    if (polaridadeInvertida) {
-    poloSuperior.textContent = "0 V";
-    poloInferior.textContent = "-" + valorTensao + " V";
-    }else{
-    poloSuperior.textContent = "+" + valorTensao + " V";
-    poloInferior.textContent = "0 V";
-}
     atualizarSetas();
 });
 
@@ -130,6 +154,53 @@ function atualizarSetas() {
         setaDireita.setAttribute("d", "M392 115 L400 130 L408 115");
 
         setaInferior.setAttribute("d", "M230 192 L215 200 L230 208");
-
     }
 }
+
+function animarParticulas(tempo) {
+
+    // calcula a velocidade com base na corrente
+    const velocidade = Math.min(intensidadeCorrente * 0.12, 0.8);
+
+    // tempo entre os quadros
+    if (ultimoTempo !== 0) {
+
+        const intervalo = (tempo - ultimoTempo) / 1000;
+
+        // atualiza a posição das partículas
+        for (let i = 0; i < particulas.length; i++) {
+
+            progressoParticulas[i] += velocidade * intervalo;
+
+            // reinicia quando completa o circuito
+            if (progressoParticulas[i] >= 1) {
+                progressoParticulas[i] -= 1;
+            }
+        }
+    }
+
+    ultimoTempo = tempo;
+
+    // posiciona cada partícula no circuito
+    for (let i = 0; i < particulas.length; i++) {
+
+        let posicao = progressoParticulas[i];
+
+        // inverte o movimento conforme a polaridade
+        if (polaridadeInvertida) {
+            posicao = 1 - posicao;
+        }
+
+        const ponto = caminhoCorrente.getPointAtLength(
+            posicao * comprimentoCaminho
+        );
+
+        particulas[i].setAttribute("cx", ponto.x);
+        particulas[i].setAttribute("cy", ponto.y);
+    }
+
+    requestAnimationFrame(animarParticulas);
+}
+
+// inicia a animação das partículas
+requestAnimationFrame(animarParticulas);
