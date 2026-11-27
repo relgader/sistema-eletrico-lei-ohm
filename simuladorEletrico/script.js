@@ -17,6 +17,8 @@ const textoPotencia = document.getElementById("valorPotencia");
 const lampGlow = document.getElementById("lampGlow");
 const lampBulbo = document.getElementById("lampBulbo");
 
+const poloPositivo = document.getElementById("poloPositivo");
+const poloNegativo = document.getElementById("poloNegativo");
 function atualizarValores() {
 
     // pega os valores dos controles
@@ -32,6 +34,10 @@ function atualizarValores() {
     textoResistencia.textContent = valorResistencia + " Ω";
     textoCorrente.textContent = corrente.toLocaleString("pt-BR") + " A";
     textoPotencia.textContent = potencia.toLocaleString("pt-BR") + " W";
+
+    // atualiza os valores dos polos
+    poloPositivo.textContent = "+" + valorTensao + " V";
+    poloNegativo.textContent = "0 V";
 
     // calcula o brilho da lâmpada
     const brilho = Math.min(potencia / 80, 1);
